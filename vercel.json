@@ -1,0 +1,21 @@
+{
+    "builds": [
+      {
+        "src": "core/wsgi.py",
+        "use": "@vercel/python"
+      },
+      {
+        "src": "static/**",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "core/wsgi.py"
+      }
+    ],
+    "github": {
+      "silent": true
+    }
+  }
