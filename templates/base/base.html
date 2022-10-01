@@ -26,7 +26,11 @@
         <!-- css -->
         <link rel="stylesheet"
             type="text/css"
-            href="{% static 'css/base/bootstrap.min.css' %}"/>
+            href="{% static 'css/bootstrap/bootstrap.min.css' %}"/>
+
+        <link rel="stylesheet" 
+            type="text/css" 
+            href="{% static "css/base/base.css" %}" />
 
         <style>
             {% block style %}{% endblock style %}
@@ -37,6 +41,10 @@
         <!-- javascript - head -->
         {% block head_start_script %}{% endblock head_start_script %}
 
+        <script type="text/javascript" 
+            src="{% static 'js/base/base.js' %}"
+            defer></script>
+        
         {% block head_end_script %}{% endblock head_end_script %}
     </head>
 
@@ -55,7 +63,7 @@
 
         
         <script type="text/javascript" 
-            src="{% static 'js/base/bootstrap.bundle.min.js' %}"
+            src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}"
             defer></script>
 
         {% block body_end_script %}{% endblock body_end_script %}
