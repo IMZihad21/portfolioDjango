@@ -16,17 +16,17 @@
         {% block meta_robots %}
         <meta name="robots"{% if norobots %}
                 content="noindex, nofollow"{% else %}
-                content="index, follow"{% endif %}>
+                content="index, follow"{% endif %}/>
         {% endblock meta_robots %}
 
         <link rel="shortcut icon"
             type="image/png"
-            href="{% static 'img/favicon.ico' %}">
+            href="{% static 'img/favicon.ico' %}"/>
 
-        {% comment %} <!-- css -->
+        <!-- css -->
         <link rel="stylesheet"
             type="text/css"
-            href="{% static 'css/base.css' %}"> {% endcomment %}
+            href="{% static 'css/base/bootstrap.min.css' %}"/>
 
         <style>
             {% block style %}{% endblock style %}
@@ -36,11 +36,6 @@
 
         <!-- javascript - head -->
         {% block head_start_script %}{% endblock head_start_script %}
-        
-        {% comment %} <script type="text/javascript" {% if DEBUG_MODE %}
-                src="{% static 'js/alpine@3.2.1.js' %}"{% else %}
-                src="https://unpkg.com/alpinejs@3.2.1/dist/cdn.min.js"{% endif %}
-                defer></script> {% endcomment %}
 
         {% block head_end_script %}{% endblock head_end_script %}
     </head>
@@ -67,6 +62,10 @@
             {% block content %}{% endblock content %}
         </main>
 
+        
+        <script type="text/javascript" 
+            src="{% static 'js/base/bootstrap.bundle.min.js' %}"
+            defer></script>
         {% block body_end_script %}{% endblock body_end_script %}
     </body>
 </html>
