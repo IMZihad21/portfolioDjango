@@ -9,11 +9,16 @@ https://docs.djangoproject.com/en/4.1/howto/deployment/asgi/
 
 import os
 
+from django.conf import settings
 from django.core.asgi import get_asgi_application
+from django.core.management import call_command
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings")
 
 application = get_asgi_application()
+
+if settings.ON_PRODUCTION:
+    call_command("migrate")
 
 # vercel requires app variable for application
 app = application
