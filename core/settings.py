@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+
 import os
 from pathlib import Path
 
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     #
     # django apps
     #
+    "home.apps.HomeConfig",
 ]
 
 MIDDLEWARE = [
@@ -89,11 +91,9 @@ TEMPLATES = [
 WSGI_APPLICATION = "core.wsgi.application"
 
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-
 if ON_PRODUCTION:
+    USE_X_FORWARDED_HOST = True
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     DATABASES = {
         "default": {
             "ENGINE": f"django.db.backends.{DJANGO_DB_ENGINE}",
@@ -103,6 +103,7 @@ if ON_PRODUCTION:
             "HOST": DJANGO_DB_HOST,
         }
     }
+
 else:
     DATABASES = {
         "default": {
@@ -111,11 +112,6 @@ else:
         }
     }
 
-
-# Secure http in production
-if ON_PRODUCTION:
-    USE_X_FORWARDED_HOST = True
-    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
