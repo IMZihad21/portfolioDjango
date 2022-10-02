@@ -63,9 +63,7 @@
             <p>This page requires Javascript to function correctly.</p>
         </noscript>
 
-        {% if render_navbar %}
-            {% include "base/navbar.html" %}
-        {% endif %}
+        {% include "base/navbar.html" %}
 
         <main id="main-container">
             {% block content %}{% endblock content %}

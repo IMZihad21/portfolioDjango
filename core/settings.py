@@ -60,6 +60,7 @@ THIRD_PARTY_APPS = []
 
 LOCAL_APPS = [
     "home.apps.HomeConfig",
+    "about.apps.AboutConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

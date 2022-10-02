@@ -18,11 +18,29 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <p class="nav-link active nav-pointer" 
+          <p
+          {% if request.path_info == "/" %}
+            class="nav-link nav-pointer active" 
+          {% else %}
+            class="nav-link nav-pointer" 
+          {% endif %}
+          hx-replace-url="true"
           hx-get="/" 
           hx-swap="outerHTML" 
-          hx-target="#main-container"
+          hx-target="#body-container"
           hx-indicator="#nav-indicator">Home</p>
+
+          <p
+          {% if request.path_info == "/about/" %}
+            class="nav-link nav-pointer active" 
+          {% else %}
+            class="nav-link nav-pointer" 
+          {% endif %}
+          hx-replace-url="true"
+          hx-get="/about/" 
+          hx-swap="outerHTML" 
+          hx-target="#body-container"
+          hx-indicator="#nav-indicator">About</p>
         </div>
       </div>
     </div>
