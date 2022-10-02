@@ -42,13 +42,13 @@
         {% block head_start_script %}{% endblock head_start_script %}
 
         <script type="text/javascript" 
-            src="{% static 'js/base/base.js' %}"
-            defer></script>
+            src="{% static 'js/base/base.js' %}">
+        </script>
         
         {% block head_end_script %}{% endblock head_end_script %}
     </head>
 
-    <body>
+    <body class="container-lg">
         {% block body_start_script %}{% endblock body_start_script %}
         
         <noscript>
@@ -57,7 +57,7 @@
 
         {% include "base/navbar.html" %}
 
-        <main id="main-container">
+        <main id="main-container" class="p-5">
             {% block content %}{% endblock content %}
         </main>
 
