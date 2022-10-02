@@ -59,7 +59,9 @@
             <p>This page requires Javascript to function correctly.</p>
         </noscript>
 
-        {% include "base/navbar.html" %}
+        {% if render_navbar %}
+            {% include "base/navbar.html" %}
+        {% endif %}
 
         <main id="main-container" class="p-5">
             {% block content %}{% endblock content %}
@@ -80,6 +82,7 @@
             // add CSRFToken to HTMX headers
             document.body.addEventListener('htmx:configRequest', (event) => {
             event.detail.headers['X-CSRFToken'] = '{{ csrf_token|safe }}';
+            event.detail.headers['X-HTMX-Request'] = true;
             })
         </script>
 
