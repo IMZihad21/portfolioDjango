@@ -5,13 +5,41 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-/* body container */
-#body-container {
-    margin-left: 13rem;
-    margin-right: 13rem;
+/* container */
+@media all and (min-width: 1024px) {
+    #body-container {
+        margin-left: 13rem;
+        margin-right: 13rem;
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    #body-container {
+        margin-left: 4rem;
+        margin-right: 4rem;
+    }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+    #body-container {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
+
+@media all and (max-width: 480px) {
+    #body-container {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+#main-container {
+    margin-top: 1.5rem;
 }
 
 /* cursor pointer for nav items */
 .nav-pointer {
     cursor: pointer;
+    margin: 0;
 }
