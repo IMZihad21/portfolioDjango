@@ -28,6 +28,10 @@
             type="text/css"
             href="{% static 'css/bootstrap/bootstrap.min.css' %}"/>
 
+        <link rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/third_party/aos.css' %}"/>
+
         <link rel="stylesheet" 
             type="text/css" 
             href="{% static "css/base.css" %}" />
@@ -78,12 +82,20 @@
             src="{% static 'js/third_party/htmx.js' %}">
         </script>
 
+        <!-- aos -->
+        <script type="text/javascript"
+            src="{% static 'js/third_party/aos.js' %}">
+        </script>
+
         <script>
             // add CSRFToken to HTMX headers
             document.body.addEventListener('htmx:configRequest', (event) => {
             event.detail.headers['X-CSRFToken'] = '{{ csrf_token|safe }}';
             event.detail.headers['X-HTMX-Request'] = true;
             })
+
+            // Init aos
+            AOS.init();
         </script>
 
         {% block body_end_script %}{% endblock body_end_script %}
