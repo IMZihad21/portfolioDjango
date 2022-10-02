@@ -30,7 +30,7 @@
 
         <link rel="stylesheet" 
             type="text/css" 
-            href="{% static "css/base/base.css" %}" />
+            href="{% static "css/base.css" %}" />
 
         <style>
             {% block style %}{% endblock style %}
@@ -41,8 +41,12 @@
         <!-- javascript - head -->
         {% block head_start_script %}{% endblock head_start_script %}
 
+        <script defer type="text/javascript" 
+            src="{% static 'js/third_party/alpine.js' %}">
+        </script>
+
         <script type="text/javascript" 
-            src="{% static 'js/base/base.js' %}">
+            src="{% static 'js/base.js' %}">
         </script>
         
         {% block head_end_script %}{% endblock head_end_script %}
@@ -61,10 +65,23 @@
             {% block content %}{% endblock content %}
         </main>
 
-        
+
+        <!-- bootstrap -->
         <script type="text/javascript" 
             src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}"
             defer></script>
+            
+        <!-- htmx -->
+        <script type="text/javascript"
+            src="{% static 'js/third_party/htmx.js' %}">
+        </script>
+
+        <script>
+            // add CSRFToken to HTMX headers
+            document.body.addEventListener('htmx:configRequest', (event) => {
+            event.detail.headers['X-CSRFToken'] = '{{ csrf_token|safe }}';
+            })
+        </script>
 
         {% block body_end_script %}{% endblock body_end_script %}
     </body>
