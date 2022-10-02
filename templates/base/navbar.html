@@ -1,12 +1,28 @@
+{% load static %}
+
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">ZèD.</a>
+      <div class="d-flex align-items-center gap-3">
+        <p class="navbar-brand m-0 nav-pointer" 
+          hx-get="/" 
+          hx-swap="outerHTML" 
+          hx-target="#body-container"
+          hx-indicator="#nav-indicator">ZèD.</p>
+        <img id="nav-indicator" 
+          class="htmx-indicator"
+          style="height: 20px;"
+          src="{% static 'img/tail-spin.svg' %}">
+      </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <p class="nav-link active nav-pointer" 
+          hx-get="/" 
+          hx-swap="outerHTML" 
+          hx-target="#body-container"
+          hx-indicator="#nav-indicator">Home</p>
         </div>
       </div>
     </div>
