@@ -1,13 +1,18 @@
 {% load static %}
 
 <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
+    <div 
+      class="container-fluid" 
+      hx-boost="true"
+      hx-target="body"
+      hx-indicator="#nav-indicator"
+    >
       <div class="d-flex align-items-center gap-3">
-        <p class="navbar-brand m-0 nav-pointer" 
-          hx-get="/" 
-          hx-swap="outerHTML" 
-          hx-target="#main-container"
-          hx-indicator="#nav-indicator">ZèD.</p>
+        <a class="navbar-brand fw-semibold" 
+          href="/" 
+        >
+          ZèD.
+        </a>
         <img id="nav-indicator" 
           class="htmx-indicator"
           style="height: 20px;"
@@ -19,19 +24,15 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           {% for navlink in navbar_links %}
-            <p
-              class="nav-link nav-pointer 
+            <a
+              class="nav-link
                 {% if request.path_info == navlink.path %}
                   active
                 {% endif %}"
-              hx-replace-url="true"
-              hx-get={{ navlink.path }}
-              hx-swap="outerHTML" 
-              hx-target="#body-container"
-              hx-indicator="#nav-indicator"
+              href={{ navlink.path }}
             >
               {{ navlink.name }}
-            </p>
+            </a>
           {% endfor %}
         </div>
       </div>
