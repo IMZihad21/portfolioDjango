@@ -25,10 +25,7 @@
         <div class="navbar-nav">
           {% for navlink in navbar_links %}
             <a
-              class="nav-link
-                {% if request.path_info == navlink.path %}
-                  active
-                {% endif %}"
+              class="nav-link py-0 {% if request.path_info == navlink.path %}active border-bottom border-dark{% endif %}"
               href={{ navlink.path }}
             >
               {{ navlink.name }}
