@@ -9,8 +9,8 @@
         
         {% block meta_description %}
         <meta name="description" {% if meta_description_content %}
-            description="{{ meta_description_content|safe }}"{% else %}
-            description="Portfolio site using django"{% endif %}/>
+            content="{{ meta_description_content|safe }}"{% else %}
+            content="Portfolio site using django"{% endif %}/>
         {% endblock meta_description %}
 
         {% block meta_robots %}
