@@ -1,0 +1,16 @@
+{% extends "base/index.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+
+    <div id="aboutContainer" data-aos="fade-up" class="pt-3">
+
+        {% for about in about_data%}
+            <p class="">
+                {{ about }}
+            </p>
+        {% endfor %}
+    </div>
+
+{% endblock content %}
