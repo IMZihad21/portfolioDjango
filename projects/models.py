@@ -1,6 +1,6 @@
-from core.models import BaseModel
-from django.contrib.postgres.fields import ArrayField
 from django.db import models
+
+from core.models import BaseModel
 
 
 class Project(BaseModel):
@@ -10,12 +10,37 @@ class Project(BaseModel):
 
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=2000)
-    cover = models.CharField(max_length=200)
-    screenshots = ArrayField(
-        models.CharField(max_length=200),
-        size=8,
+    cover = models.URLField(max_length=200)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self):
+        return self.name
+
+
+class ProjectScreenshot(BaseModel):
+    """
+    Screenshot model for project
+    """
+
+    title = models.TextField(max_length=100, blank=True)
+    image_url = models.URLField(max_length=200)
+    project = models.ForeignKey(
+        Project, on_delete=models.CASCADE, related_name="screenshots"
     )
-    tags = ArrayField(
-        models.CharField(max_length=100),
-        size=8,
-    )
+
+    def __str__(self):
+        return self.title
+
+
+class ProjectTag(BaseModel):
+    """
+    Tags for projects
+    """
+
+    title = models.TextField(max_length=100)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="tags")
+
+    def __str__(self):
+        return self.title
