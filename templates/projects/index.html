@@ -4,7 +4,26 @@
 {% block content %}
 
     <div id="aboutContainer" data-aos="fade-up" class="pt-3">
-
+        <div class="row">
+        {% for project in projects %}
+            <div class="col-sm-6">
+                <div class="card" style="">
+                    <img src="{{ project.cover }}" class="card-img-top" alt="{{ project.name }}">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ project.name }}</h5>
+                      <p class="card-text">{{ project.description }}</p>
+                    </div>
+                    {% if project.links.all.count %}
+                        <div class="card-body">
+                            {% for link in project.links.all %}
+                                <a href="{{ link.link_url }}" class="card-link">{{ link.link_name }}</a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
     </div>
 
 {% endblock content %}

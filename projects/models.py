@@ -1,6 +1,5 @@
-from django.db import models
-
 from core.models import BaseModel
+from django.db import models
 
 
 class Project(BaseModel):
@@ -17,6 +16,19 @@ class Project(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+class ProjectLink(BaseModel):
+    """
+    Screenshot model for project
+    """
+
+    link_name = models.TextField(max_length=100, blank=True)
+    link_url = models.URLField(max_length=200)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="links")
+
+    def __str__(self):
+        return self.link_name
 
 
 class ProjectScreenshot(BaseModel):

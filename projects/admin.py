@@ -1,6 +1,12 @@
 from django.contrib import admin
 
-from projects.models import Project, ProjectTag, ProjectScreenshot
+from projects.models import Project, ProjectLink, ProjectScreenshot, ProjectTag
+
+
+class ProjectLinkInline(admin.StackedInline):
+    model = ProjectLink
+    extra = 0
+    exclude = ["is_active"]
 
 
 class ProjectScreenshotInline(admin.StackedInline):
@@ -17,7 +23,7 @@ class ProjectTagInline(admin.StackedInline):
 
 class ProjectAdmin(admin.ModelAdmin):
     model = Project
-    inlines = [ProjectScreenshotInline, ProjectTagInline]
+    inlines = [ProjectLinkInline, ProjectScreenshotInline, ProjectTagInline]
 
 
 # Register your models here.
